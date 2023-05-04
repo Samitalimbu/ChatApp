@@ -69,7 +69,6 @@ class HomeScreen extends ConsumerWidget {
           children: [
             Container(
               height: 140,
-              color: const Color.fromARGB(255, 201, 196, 196),
               child: users.when(
                   data: (data) {
                     return ListView.builder(
@@ -81,12 +80,11 @@ class HomeScreen extends ConsumerWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () {
-                                onTap:
-                                () {
-                                  Get.to(
-                                    () => UserDetailPage(data[index]),
-                                  );
-                                };
+                                Navigator.of(context).pop();
+
+                                Get.to(
+                                  () => UserDetailPage(data[index]),
+                                );
                               },
                               child: Column(
                                 children: [
@@ -114,6 +112,7 @@ class HomeScreen extends ConsumerWidget {
                     data: (data) {
                       return ListView.builder(
                           itemCount: data.length,
+                          physics: BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.all(12.0),
