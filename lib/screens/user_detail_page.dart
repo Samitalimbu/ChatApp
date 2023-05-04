@@ -1,4 +1,5 @@
 import 'package:firebase/screens/chat_page.dart';
+import 'package:firebase/screens/home.dart';
 import 'package:firebase/services/post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -21,7 +22,13 @@ class UserDetailPage extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            InkWell(
+                onTap: () {
+                  Get.to(() => HomeScreen());
+                },
+                child: Icon(Icons.arrow_back_ios, size: 18)),
             Row(
               children: [
                 CircleAvatar(
