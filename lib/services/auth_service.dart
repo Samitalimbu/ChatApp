@@ -51,7 +51,7 @@ class AuthService {
         types.User(
             firstName: username,
             id: credential.user!.uid, // UID from Firebase Authentication
-            imageUrl: 'https://i.pravatar.cc/300',
+            imageUrl: url,
             lastName: '',
             metadata: {
               'email': email,
@@ -73,6 +73,10 @@ class AuthService {
     try {
       final credential = await FirebaseInstances.firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
+      final token = await FirebaseInstances.fireMessage.getToken();
+      await userDb.doc(credential.user!.uid).update({
+        'metadata': {'email': email, 'token': token}
+      });
 
       return Right(true);
     } on FirebaseAuthException catch (err) {

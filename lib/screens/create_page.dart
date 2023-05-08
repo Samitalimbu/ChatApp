@@ -9,18 +9,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class User {
-  String mnio = 'li';
-  void method() {
-    mnio = 'lio';
-  }
-}
-
-m() {
-  User()..mnio = 'like';
-}
-
-
 class CreatePageScreen extends ConsumerWidget {
   final detailController = TextEditingController();
   final titleController = TextEditingController();
@@ -195,7 +183,7 @@ class CreatePageScreen extends ConsumerWidget {
                                 ]),
                             child: Center(
                                 child: image == null
-                                    ? const Center(
+                                    ? Center(
                                         child: Text("Please select and image"),
                                       )
                                     : Image.file(File(image.path))),

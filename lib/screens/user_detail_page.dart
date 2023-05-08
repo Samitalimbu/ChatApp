@@ -1,5 +1,6 @@
 import 'package:firebase/screens/chat_page.dart';
 import 'package:firebase/screens/home.dart';
+import 'package:firebase/screens/update_page_screen.dart';
 import 'package:firebase/services/post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -46,7 +47,8 @@ class UserDetailPage extends ConsumerWidget {
                             final response =
                                 await ref.read(roomProvider).roomCreate(user);
                             if (response != null) {
-                              Get.to(() => ChatPage(response));
+                              Get.to(() => ChatPage(response,
+                                  user.metadata!['token'], user.firstName!));
                             }
                           },
                           child: Text('Start Chat'))
